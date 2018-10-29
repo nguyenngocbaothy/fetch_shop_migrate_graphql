@@ -7,10 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     postcode: DataTypes.INTEGER,
     phone: DataTypes.INTEGER,
     email: DataTypes.STRING,
-    registered: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false
-    }
+    registered: DataTypes.BOOLEAN
   }, {});
   Customer.associate = function(models) {
     // associations can be defined here
