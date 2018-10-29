@@ -8,4 +8,10 @@ router.get('/', (req, res) => {
     .catch(err => res.send(err.message));
 });
 
+router.post('/', (req, res) => {
+    Customer.createCustomer(req.body)
+    .then(customer => res.send(customer))
+    .catch(err => res.send(err.message));
+});
+
 module.exports = router;
