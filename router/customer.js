@@ -14,4 +14,11 @@ router.post('/', (req, res) => {
     .catch(err => res.send(err.message));
 });
 
+router.put('/:id', (req, res) => {
+    Customer.updateCustomer(req.body, req.params.id)
+    .then(customer => res.send(customer))
+    .catch(err => res.send(err.message));
+});
+
+
 module.exports = router;

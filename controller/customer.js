@@ -2,7 +2,8 @@ const Customer = require('../models/').Customer;
 
 module.exports = {
     getCustomer,
-    createCustomer
+    createCustomer,
+    updateCustomer
 };
 
 async function getCustomer() {
@@ -18,4 +19,16 @@ async function createCustomer(payload) {
 
     return customer;
 }
+
+async function updateCustomer(payload, customerId) {
+    const customer = await Customer.findById(customerId)
+        .catch(err => { throw new Error('Error to find customers') })
+    if (!customer) { throw new Error('Can not find customer') }
+    
+    const customerUpdate = await customer.update(payload)
+        .catch(err => { throw new Error('Error to update customer') })   
+
+    return customerUpdate;
+}
+
 
