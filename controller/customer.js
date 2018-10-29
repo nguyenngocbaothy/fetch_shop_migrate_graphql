@@ -3,7 +3,8 @@ const Customer = require('../models/').Customer;
 module.exports = {
     getCustomer,
     createCustomer,
-    updateCustomer
+    updateCustomer,
+    deleteCustomer
 };
 
 async function getCustomer() {
@@ -31,4 +32,14 @@ async function updateCustomer(payload, customerId) {
     return customerUpdate;
 }
 
+async function deleteCustomer(customerId) {
+    const customer = await Customer.findById(customerId)
+        .catch(err => { throw new Error('Error to find customers') })
+    if (!customer) { throw new Error('Can not find customer') }
+    
+    const customerDelete = await customer.destroy()
+        .catch(err => { throw new Error('Error to delete customer') })   
+
+    return customerDelete;
+}
 

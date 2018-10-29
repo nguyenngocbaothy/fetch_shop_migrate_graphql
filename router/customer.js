@@ -20,5 +20,10 @@ router.put('/:id', (req, res) => {
     .catch(err => res.send(err.message));
 });
 
+router.delete('/:id', (req, res) => {
+    Customer.deleteCustomer(req.params.id)
+    .then(customer => res.send(customer))
+    .catch(err => res.send(err.message));
+});
 
 module.exports = router;
