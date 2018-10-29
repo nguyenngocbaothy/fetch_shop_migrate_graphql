@@ -9,8 +9,14 @@ module.exports = {
 };
 
 async function getProduct() {
-    const products = await Product.findAll({})
-        .catch(err => { console.log(err.message) })
+    const products = await Product.findAll({
+        include: [
+            {
+                model: Category
+            }
+        ]
+    })
+        .catch(err => { throw new Error(err.message) })
 
     return products;
 }
