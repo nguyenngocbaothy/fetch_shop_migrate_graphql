@@ -31,6 +31,13 @@ const resolvers = {
             })
         
             return product;
+        },
+        deleteProduct: async (parent, args) => {
+            const product = await Product.destroy({
+                where: {id: args.id}
+            })
+        
+            return product;
         }
     }
 };
