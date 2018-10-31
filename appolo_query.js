@@ -17,6 +17,14 @@ const resolvers = {
                 }
             ]
         })
+    },
+    Mutation: {
+        createProduct: async (parent, args) => {
+            const product = await Product.create(args);
+            if (!product) { throw new Error('Can not create product'); }
+
+            return product;
+        }
     }
 };
 

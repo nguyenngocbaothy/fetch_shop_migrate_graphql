@@ -7,6 +7,7 @@ const typeDefs = gql`
     description: String
     image: String
     price: Float
+    cat_id: ID
     Category: Category
   }
   type Category {
@@ -16,9 +17,14 @@ const typeDefs = gql`
     image: String
     Products: [Product]
   }
+  
   type Query {
     products: [Product]
     categories: [Category]
+  }
+  
+  type Mutation {
+    createProduct(name: String, description: String, image: String, price: Float, cat_id: ID): Product!
   }
 `;
 
