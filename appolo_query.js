@@ -24,6 +24,13 @@ const resolvers = {
             if (!product) { throw new Error('Can not create product'); }
 
             return product;
+        },
+        updateProduct: async (parent, {productId, ...args}) => {
+            const product = await Product.update(args, {
+                where: {id: productId}
+            })
+        
+            return product;
         }
     }
 };
