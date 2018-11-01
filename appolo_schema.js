@@ -24,6 +24,7 @@ const typeDefs = gql`
   }
   
   type Mutation {
+    getProductById(id: ID): Product
     createProduct(name: String, description: String, image: String, price: Float, cat_id: ID): Product!
     updateProduct(name: String, description: String, image: String, price: Float, cat_id: ID, productId: ID): Product!
     deleteProduct(id: ID): Product

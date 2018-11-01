@@ -19,6 +19,12 @@ const resolvers = {
         })
     },
     Mutation: {
+        getProductById: async (parent, {id}) => {
+            const product = await Product.findByPk(id);
+            if (!product) { throw new Error('Can not find product'); }
+
+            return product;
+        },
         createProduct: async (parent, args) => {
             const product = await Product.create(args);
             if (!product) { throw new Error('Can not create product'); }
